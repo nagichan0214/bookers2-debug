@@ -1,0 +1,19 @@
+ <% if book.favorited_by?(current_user) %>
+  
+  <%= form_with(url: book_favorite_path(book), method: :delete, local:false, class: "unlike-form") do |f| %>
+        <%= f.button type: :submit, class: "unlike-btn" do %>
+      <i class="fas fa-heart" style="color: red;"></i>
+      <%= book.favorites.count %>
+      <% end %>
+    <% end %>
+  
+<% else %>
+  
+    <%= form_with(url: book_favorite_path(book), method: :post, local:false, class: "like-form") do |f| %>
+        <%= f.button type: :submit, class: "unlike-btn" do %>
+      <i class="fas fa-heart" style="color: red;"></i>
+      <%= book.favorites.count %>
+      <% end %>
+    <% end %>
+  
+<% end %>
